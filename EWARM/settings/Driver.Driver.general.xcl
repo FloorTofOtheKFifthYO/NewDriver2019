@@ -1,0 +1,15 @@
+"E:\IAR Embedded Workbench 8.0\arm\bin\armproc.dll" 
+
+"E:\IAR Embedded Workbench 8.0\arm\bin\armjlink2.dll" 
+
+"E:\folder\机器人队\Cube\Driver\EWARM\Driver\Exe\Driver.out" 
+
+--plugin "E:\IAR Embedded Workbench 8.0\arm\bin\armbat.dll" 
+
+--device_macro "E:\IAR Embedded Workbench 8.0\arm\config\debugger\ST\STM32F1xx_XL.dmac" 
+
+--flash_loader "E:\IAR Embedded Workbench 8.0\arm\config\flashloader\ST\FlashSTM32F10xxC.board" 
+
+
+
+
