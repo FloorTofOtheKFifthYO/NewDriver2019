@@ -5,11 +5,11 @@ extern "C" {
 #endif
  
 extern int brush_control_flag;   
-extern int move_flag;
-    
-extern float speed_now;
+//extern int move_flag;
+
 extern float position_now;
 extern float position_last;
+extern float speed_now;
 
 extern float target_pwm;
 extern float target_speed;
@@ -34,9 +34,10 @@ typedef struct{
     float Kp;
     float Ki;
     float Kd;             //定义比例、积分、微分系数
+    float OutData;
 }PID_struct;
 
-float PID_release(PID_struct *PID,float target_data, float actual_data);
+float PID_release(PID_struct *PID,float actual_data,float target_data);
 void send_wave(float arg1,float arg2,float arg3,float arg4);
     
 #ifdef __cplusplus

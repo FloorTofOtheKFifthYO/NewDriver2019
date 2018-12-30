@@ -26,7 +26,13 @@ static cmd_struct cmd_tbl[] = {
   CMD_ADD("write_flash","写入flash  cardid",cmd_write_flash_func),
   CMD_ADD("read_flash","加载flash",cmd_read_flash_func),
       
-  CMD_ADD("read_pwm","读pwm",cmd_read_pwm_func)    
+  CMD_ADD("read_pwm","读pwm",cmd_read_pwm_func),
+      
+  CMD_ADD("send_wave", "发波形 1 2 3 4", cmd_send_wave_func),
+  CMD_ADD("send_wave_stop", "不发波形", cmd_send_wave_stop_func),
+      
+  CMD_ADD("read_speed","读速度", cmd_read_speed),
+  CMD_ADD("read_position","读位置",cmd_read_position)
 };
 
 char cmd_line[MAX_CMD_LINE_LENGTH + 1];

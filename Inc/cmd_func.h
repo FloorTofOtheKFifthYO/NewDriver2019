@@ -28,7 +28,12 @@ void cmd_write_flash_func(int argc,char *argv[]);
 void cmd_read_flash_func(int argc,char *argv[]);
 
 void cmd_read_pwm_func(int argc,char *argv[]);
+ 
+void cmd_send_wave_func(int argc,char *argv[]);
+void cmd_send_wave_stop_func(int argc,char *argv[]);
 
+void cmd_read_speed(int argc,char *argv[]);
+void cmd_read_position(int argc,char *argv[]);
    
 #ifdef __cplusplus
 }

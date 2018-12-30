@@ -106,10 +106,10 @@ void MX_TIM4_Init(void)
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 0;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 0;
+  htim4.Init.Period = 0xFFFF;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
+  sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
   sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
@@ -344,6 +344,7 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 void TIM_Mode_init(void)
 {
     HAL_TIM_Encoder_Start(&htim4,TIM_CHANNEL_ALL);
+    TIM4->CNT = 32767;
     HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
     HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);

@@ -12,7 +12,7 @@
 #define as5047p_Disable() 		HAL_GPIO_WritePin(CSN_MAG_GPIO_Port, CSN_MAG_Pin, GPIO_PIN_SET)
 
      
-extern uint16_t as5047p_read_pos();
+uint16_t as5047p_Get_Position();
 #ifdef __cplusplus
 }
 #endif

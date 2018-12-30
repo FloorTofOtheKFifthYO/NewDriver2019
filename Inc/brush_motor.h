@@ -21,7 +21,8 @@ typedef struct{
 
 
 #define Brush_encoder_speed_read() Encoder_read_speed()
-#define Brush_encoder_position_read() as5047p_read_pos()
+//#define Brush_encoder_position_read() as5047p_read_pos()
+#define Brush_encoder_position_read() as5047p_Get_Position()
 #define ABSOLUTEMAXPOS AS5047PMAXPOS
 
 extern Brush_Phase Brush_chl_AB;

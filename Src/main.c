@@ -118,7 +118,7 @@ int main(void)
     cmd_init();
     //load_prams();//必须在can_init之前
     can_init();
-    uprintf("start!\r\n");
+    uprintf("START!\r\n");
     /* USER CODE END 2 */
     
     /* Infinite loop */
@@ -130,11 +130,13 @@ int main(void)
         
         /* USER CODE BEGIN 3 */
         usart_exc();
-        if(brush_control_flag&&move_flag&&(motor_type_flag==BRUSH))  
+        
+        if(motor_type_flag==BRUSH)  
         {
+            
             Brush_motor_control();
         }
-        brush_control_flag=0;
+        
     }
     /* USER CODE END 3 */
     
@@ -218,11 +220,11 @@ void HAL_SYSTICK_Callback(void){
     static int time_1ms_cnt;
     time_1ms_cnt++;
     if(time_1ms_cnt%20 == 0){
-        if(send_wave_flag)
-            send_wave(wave_arg[0],wave_arg[1],wave_arg[2],wave_arg[3]);     
-    }
-    if(time_1ms_cnt%10 == 0){    
         
+    }
+    if(time_1ms_cnt%10 == 0){ 
+        if(send_wave_flag)
+            send_wave((float)target_speed,(float)speed_now,(float)brush_speed_PID.integral,(float)brush_speed_PID.err);     
     }
     if(time_1ms_cnt%5 == 0){    
         brush_control_flag=1;//PID

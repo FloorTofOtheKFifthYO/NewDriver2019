@@ -169,6 +169,7 @@ void Configure_Filter(void)
   sFilterConfig.FilterIdLow = 0x0000;//(((unsigned int)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF;//要过滤的ID低位
   //sFilterConfig.FilterIdLow = (uint32_t)flash_data[0];
   sFilterConfig.FilterMaskIdHigh = 0x7ff<<5;// 0xffff;
+  //sFilterConfig.FilterMaskIdHigh = 0x0000<<5;// 0xffff;
   sFilterConfig.FilterMaskIdLow = 0x0000;//0xffff;
   sFilterConfig.FilterFIFOAssignment =CAN_FILTER_FIFO0;//过滤器被关联到FIFO0；
   sFilterConfig.FilterActivation = ENABLE;//使能过滤器

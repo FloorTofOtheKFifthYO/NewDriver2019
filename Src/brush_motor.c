@@ -11,8 +11,8 @@ Brush_Phase Brush_chl_BC={.Brush_Phase_pos={B,C},.Brush_Phase_neg={C,B}};
 Brush_Phase Brush_chl_AC={.Brush_Phase_pos={A,C},.Brush_Phase_neg={C,A}};
 Brush_Phase Brush_chl={.Brush_Phase_pos={A,B},.Brush_Phase_neg={B,A}};//Brush_chl_AB;//有刷通道
 
-PID_struct brush_speed_PID = {.err_last=0, .integral=0, .err=0, .Kp=0, .Ki=0, .Kd=0};//有刷速度环PID
-PID_struct brush_position_PID = {.err_last=0, .integral=0, .err=0, .Kp=0, .Ki=0, .Kd=0};//有刷位置环PID
+PID_struct brush_speed_PID = {.err_last=0, .integral=0.0, .err=0, .Kp=0, .Ki=0, .Kd=0};//有刷速度环PID
+PID_struct brush_position_PID = {.err_last=0, .integral=0.0, .err=0, .Kp=0, .Ki=0, .Kd=0};//有刷位置环PID
 
 void Brush_pwm_control(float pwm){
     if(pwm>=0)
@@ -25,7 +25,7 @@ static void Brush_speed_control(float target_speed)//差分时间5ms
 {
     if(Brush_encoder_type == INCREMENT)
     {
-        speed_now = Brush_encoder_speed_read();
+        speed_now = (float)Brush_encoder_speed_read();
     }
     else
     {
@@ -37,8 +37,11 @@ static void Brush_speed_control(float target_speed)//差分时间5ms
             speed_now+=ABSOLUTEMAXPOS;
         position_last = position_now;
     }
-    float calculate = PID_release(&brush_speed_PID, target_speed, (float)speed_now);
+    
+    float calculate = PID_release(&brush_speed_PID, speed_now,target_speed);
     Brush_pwm_control(calculate);//pwm -95~95
+    
+    
 }
 //有刷位置环
 static void Brush_position_control(float target_position)//差分时间5ms
@@ -51,13 +54,13 @@ static void Brush_position_control(float target_position)//差分时间5ms
     else
     { 
         position_now = Brush_encoder_position_read();
-         //TODO：过零处理  反转
+        //TODO：过零处理  反转
         while (target_position-position_now>ABSOLUTEMAXPOS/2)
             target_position-=ABSOLUTEMAXPOS;
         while (target_position-position_now<-ABSOLUTEMAXPOS/2)
             target_position+=ABSOLUTEMAXPOS;       
     }
-    float calculate = PID_release(&brush_position_PID, target_position, (float)position_now);
+    float calculate = PID_release(&brush_position_PID,(float)position_now, target_position);
     if(Brush_position_with_speed_flag)
     {
         Brush_speed_control(calculate);
@@ -66,6 +69,7 @@ static void Brush_position_control(float target_position)//差分时间5ms
     {
         Brush_pwm_control(calculate);//pwm -95~95
     }
+    
 }
 //外部调用
 void Brush_motor_control()
@@ -78,12 +82,20 @@ void Brush_motor_control()
         }
     case SPEED_MODE:
         {
-            Brush_speed_control(target_speed);//编码器种类
+            //5ms到了
+            if(brush_control_flag){
+                Brush_speed_control(target_speed);//编码器种类
+                brush_control_flag=0;
+            }
             break;
         }
     case POSITION_MODE:
         {
-            Brush_position_control(target_position);//编码器种类  是否速度环
+            //5ms到了
+            if(brush_control_flag){
+                Brush_position_control(target_position);//编码器种类  是否速度环
+                brush_control_flag=0;
+            }
             break;
         }
     default:
