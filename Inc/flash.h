@@ -9,7 +9,7 @@
 #include "main.h"
   
    
-extern float flash_data[9];
+extern float flash_data[13];
 void write_prams();
 void load_prams();
    

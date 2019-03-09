@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -88,7 +88,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle)
   if(canHandle->Instance==CAN1)
   {
   /* USER CODE BEGIN CAN1_MspInit 0 */
-
+    
   /* USER CODE END CAN1_MspInit 0 */
     /* CAN1 clock enable */
     __HAL_RCC_CAN1_CLK_ENABLE();
@@ -108,7 +108,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* canHandle)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN CAN1_MspInit 1 */
-
+    
   /* USER CODE END CAN1_MspInit 1 */
   }
 }
@@ -119,7 +119,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
   if(canHandle->Instance==CAN1)
   {
   /* USER CODE BEGIN CAN1_MspDeInit 0 */
-
+    
   /* USER CODE END CAN1_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_CAN1_CLK_DISABLE();
@@ -133,7 +133,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
     /* CAN1 interrupt Deinit */
     HAL_NVIC_DisableIRQ(USB_LP_CAN1_RX0_IRQn);
   /* USER CODE BEGIN CAN1_MspDeInit 1 */
-
+    
   /* USER CODE END CAN1_MspDeInit 1 */
   }
 } 
@@ -153,7 +153,6 @@ void can_init()
   }
   uprintf("can ready!!!\r\n\r\n");
   can_add_func();
-  //union_init();
 }
 
 //过滤器初始化
@@ -164,8 +163,8 @@ void Configure_Filter(void)
   sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;//滤波器位宽为单个32位
   
   
-  sFilterConfig.FilterIdHigh =(int)flash_data[0]<<5;
-  //sFilterConfig.FilterIdHigh =0x0000<<5;//0x0122<<5;//(((unsigned int)0x1314<<3)&0xFFFF0000)>>16; //要过滤的ＩＤ高位
+  //sFilterConfig.FilterIdHigh =(int)flash_data[0]<<5;
+  sFilterConfig.FilterIdHigh =0x0000<<5;//0x0122<<5;//(((unsigned int)0x1314<<3)&0xFFFF0000)>>16; //要过滤的ＩＤ高位
   sFilterConfig.FilterIdLow = 0x0000;//(((unsigned int)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF;//要过滤的ID低位
   //sFilterConfig.FilterIdLow = (uint32_t)flash_data[0];
   sFilterConfig.FilterMaskIdHigh = 0x7ff<<5;// 0xffff;
@@ -245,18 +244,8 @@ int CAN_LIST_MATCH(uint32_t ID, CanRxMsgTypeDef* pRxMsg)
 ****/
 void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)	
 {
-   
-    int i;
-  for(i=0;i<8;i++)
-  {
-    can_RX_data.ch[i]=hcan->pRxMsg->Data[i];
-    //uprintf("receive %x ",can_RX_data.ch[i]);
-  }
   
-  uprintf("ID=%x    ",hcan->pRxMsg->StdId);
-  uprintf("receive %lf\r\n\r\n",can_RX_data.in);
-  
-  //CAN_LIST_MATCH(hcan->pRxMsg->StdId, hcan->pRxMsg);
+  CAN_LIST_MATCH(hcan->pRxMsg->StdId, hcan->pRxMsg);
   if(HAL_CAN_Receive_IT(hcan,CAN_FIFO0)!=HAL_OK)
   {
     __HAL_CAN_ENABLE_IT(hcan, CAN_IT_FOV0 | CAN_IT_FMP0);
@@ -277,20 +266,6 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan){
 void can_add_func(void)
 {
   can_add_callback(0X00,callback);
-  can_add_callback(0X01,callback);
-  can_add_callback(0X02,callback);
-  
-  can_add_callback(0X03,callback);
-  can_add_callback(0X04,callback);
-  can_add_callback(0X05,callback);
-  
-  can_add_callback(0X06,callback);
-  can_add_callback(0X07,callback);
-  can_add_callback(0X08,callback);
-  
-  can_add_callback(0X09,callback);  
-  can_add_callback(0X0A,callback);
-  can_add_callback(0X0B,callback);
 }
 /* USER CODE END 1 */
 

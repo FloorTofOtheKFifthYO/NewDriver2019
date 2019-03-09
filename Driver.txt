@@ -1,0 +1,138 @@
+Configuration	Driver
+STM32CubeMX 	5.0.0
+Date	02/24/2019
+MCU	STM32F103RCTx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN10	ADC1_IN10	PC0
+CAN	Master	CAN_RX	PA11
+CAN	Master	CAN_TX	PA12
+RCC	Crystal/Ceramic Resonator	RCC_OSC_IN	PD0-OSC_IN
+RCC	Crystal/Ceramic Resonator	RCC_OSC_OUT	PD1-OSC_OUT
+SPI2	Full-Duplex Master	SPI2_MISO	PB14
+SPI2	Full-Duplex Master	SPI2_MOSI	PB15
+SPI2	Full-Duplex Master	SPI2_SCK	PB13
+SYS	Serial Wire	SYS_JTCK-SWCLK	PA14
+SYS	Serial Wire	SYS_JTMS-SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+TIM2	PWM Generation CH1	TIM2_CH1	PA0-WKUP
+TIM2	PWM Generation CH2	TIM2_CH2	PA1
+TIM2	PWM Generation CH3	TIM2_CH3	PA2
+TIM4	Encoder Mode	TIM4_CH1	PB6
+TIM4	Encoder Mode	TIM4_CH2	PB7
+UART5	Asynchronous	UART5_RX	PD2
+UART5	Asynchronous	UART5_TX	PC12
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+2	PC13-TAMPER-RTC	GPIO_Output	CH3_L
+3	PC14-OSC32_IN	GPIO_Output	CH2_L
+4	PC15-OSC32_OUT	GPIO_Output	CH1_L
+5	PD0-OSC_IN	RCC_OSC_IN	
+6	PD1-OSC_OUT	RCC_OSC_OUT	
+8	PC0	ADC1_IN10	
+14	PA0-WKUP	TIM2_CH1	
+15	PA1	TIM2_CH2	
+16	PA2	TIM2_CH3	
+17	PA3	GPIO_EXTI3	HALL1
+20	PA4	GPIO_EXTI4	HALL2
+21	PA5	GPIO_EXTI5	HALL3
+26	PB0	GPIO_Output	LED_D9
+27	PB1	GPIO_Input	KEY
+29	PB10	GPIO_Output	CSN
+30	PB11	GPIO_Output	OLED_DC
+33	PB12	GPIO_Output	OLED_RES
+34	PB13	SPI2_SCK	
+35	PB14	SPI2_MISO	
+36	PB15	SPI2_MOSI	
+37	PC6	GPIO_Output	CSN_MAG
+44	PA11	CAN_RX	
+45	PA12	CAN_TX	
+46	PA13	SYS_JTMS-SWDIO	
+49	PA14	SYS_JTCK-SWCLK	
+53	PC12	UART5_TX	
+54	PD2	UART5_RX	
+58	PB6	TIM4_CH1	
+59	PB7	TIM4_CH2	
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN10	ADC1_IN10	PC0
+CAN	Master	CAN_RX	PA11
+CAN	Master	CAN_TX	PA12
+RCC	Crystal/Ceramic Resonator	RCC_OSC_IN	PD0-OSC_IN
+RCC	Crystal/Ceramic Resonator	RCC_OSC_OUT	PD1-OSC_OUT
+SPI2	Full-Duplex Master	SPI2_MISO	PB14
+SPI2	Full-Duplex Master	SPI2_MOSI	PB15
+SPI2	Full-Duplex Master	SPI2_SCK	PB13
+SYS	Serial Wire	SYS_JTCK-SWCLK	PA14
+SYS	Serial Wire	SYS_JTMS-SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+TIM2	PWM Generation CH1	TIM2_CH1	PA0-WKUP
+TIM2	PWM Generation CH2	TIM2_CH2	PA1
+TIM2	PWM Generation CH3	TIM2_CH3	PA2
+TIM4	Encoder Mode	TIM4_CH1	PB6
+TIM4	Encoder Mode	TIM4_CH2	PB7
+UART5	Asynchronous	UART5_RX	PD2
+UART5	Asynchronous	UART5_TX	PC12
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+2	PC13-TAMPER-RTC	GPIO_Output	CH3_L
+3	PC14-OSC32_IN	GPIO_Output	CH2_L
+4	PC15-OSC32_OUT	GPIO_Output	CH1_L
+5	PD0-OSC_IN	RCC_OSC_IN	
+6	PD1-OSC_OUT	RCC_OSC_OUT	
+8	PC0	ADC1_IN10	
+14	PA0-WKUP	TIM2_CH1	
+15	PA1	TIM2_CH2	
+16	PA2	TIM2_CH3	
+17	PA3	GPIO_EXTI3	HALL1
+20	PA4	GPIO_EXTI4	HALL2
+21	PA5	GPIO_EXTI5	HALL3
+26	PB0	GPIO_Output	LED_D9
+27	PB1	GPIO_Input	KEY
+29	PB10	GPIO_Output	CSN
+30	PB11	GPIO_Output	OLED_DC
+33	PB12	GPIO_Output	OLED_RES
+34	PB13	SPI2_SCK	
+35	PB14	SPI2_MISO	
+36	PB15	SPI2_MOSI	
+37	PC6	GPIO_Output	CSN_MAG
+44	PA11	CAN_RX	
+45	PA12	CAN_TX	
+46	PA13	SYS_JTMS-SWDIO	
+49	PA14	SYS_JTCK-SWCLK	
+53	PC12	UART5_TX	
+54	PD2	UART5_RX	
+58	PB6	TIM4_CH1	
+59	PB7	TIM4_CH2	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : Driver
+Project Folder : C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019
+Toolchain / IDE : EWARM V7
+Firmware Package Name and Version : STM32Cube FW_F1 V1.6.1
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : Yes
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+

@@ -1196,13 +1196,13 @@
         <group>
             <name>User</name>
             <file>
+                <name>$PROJ_DIR$\..\Src\adc.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Src\as5047p.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\board.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Src\brush_motor.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\can.c</name>
@@ -1227,6 +1227,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\main.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\motor.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\spi.c</name>
@@ -1260,6 +1263,12 @@
             <name>STM32F1xx_HAL_Driver</name>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_can.c</name>

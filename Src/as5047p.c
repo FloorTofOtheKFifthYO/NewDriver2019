@@ -8,6 +8,7 @@
 
 static uint16_t Count_PARC(uint16_t data);
 static uint16_t Command(uint16_t address,uint8_t read);
+static uint16_t Write_frame(uint16_t data);
 
 uint16_t Read_Reg(uint16_t reg){
   uint16_t command=0;
@@ -32,6 +33,28 @@ uint16_t Read_Reg(uint16_t reg){
   return result;
 }
 
+uint16_t Write_Reg(uint16_t reg,uint16_t data){
+  uint16_t command=0;
+  uint16_t err;
+  uint16_t frame;
+  
+  command=Command(0x01,1);//´íÎó¼Ä´æÆ÷
+  Set_CSN(0);
+  HAL_SPI_Transmit(&SPI_USE,(uint8_t *)&command,1,100);
+  Set_CSN(1);
+  
+  command=Command(reg,0);//Ğ´µÄµØÖ·
+  Set_CSN(0);
+  HAL_SPI_TransmitReceive(&SPI_USE,(uint8_t *)&command,(uint8_t *)&err,1,100);
+  Set_CSN(1);
+  
+  Set_CSN(0);//Ğ´µÄÄÚÈİ
+  frame=Write_frame(data);//Ğ´µÄÄÚÈİ
+  HAL_SPI_Transmit(&SPI_USE,(uint8_t *)&frame,1,100);
+  Set_CSN(1);
+  return err;
+}
+
 uint16_t as5047p_Get_Position(){
   uint16_t raw_data=0;
   uint16_t position=0;
@@ -42,6 +65,18 @@ uint16_t as5047p_Get_Position(){
   position=raw_data&0x3FFF;
   return position;
 }
+
+uint16_t as5047p_Write_Position(uint16_t data){
+  uint16_t raw_data=0;
+  uint16_t position=0;
+  raw_data=Write_Reg(0x0003,data);
+  if(raw_data&(1<<14)){
+    return 0xFFFF;
+  }
+  position=raw_data&0x3fff;
+  return position;
+}
+
 
 static uint16_t Count_PARC(uint16_t data){
   // ?§µ?
@@ -66,4 +101,12 @@ static uint16_t Command(uint16_t address,uint8_t read){
   command|=(read<<14);
   command|=Count_PARC(command);
   return command;
+}
+
+static uint16_t Write_frame(uint16_t data){
+  uint16_t frame=0;
+  frame|=data;
+  frame|=(0<<14);
+  frame|=Count_PARC(frame);
+  return frame;
 }

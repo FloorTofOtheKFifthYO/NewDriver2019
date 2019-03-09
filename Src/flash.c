@@ -1,6 +1,8 @@
 #include "flash.h"
 #include "usart.h"
-#include "brush_motor.h"
+#include "motor.h"
+#include "encoder.h"
+#include "utils.h"
 
 
 //如果不成功，就有可能是FLASH的大小和地址设置问题。
@@ -17,7 +19,7 @@
 //4.锁住FLASH
 //FLASH读取数据：直接读取相应的FLASH地址即可
 
-float flash_data[]={0,0,0,0,0,0,0,0,0};//烧进flash中的数据:6个PID参数
+float flash_data[]={0,0,0,0,0,0,0,0,0,0,0,0,0};//烧进flash中的13个数据
 
 
 //将参数写进flash中
@@ -62,12 +64,18 @@ void load_prams()
     uprintf("flash_data[%d]=%lf\r\n",i,flash_data[i]);
   }	
   uprintf("\r\n");
-  brush_speed_PID.Kp=flash_data[1];
-  brush_speed_PID.Ki=flash_data[2];
-  brush_speed_PID.Kd=flash_data[3];
-  brush_position_PID.Kp=flash_data[4];
-  brush_position_PID.Ki=flash_data[5];
-  brush_position_PID.Kd=flash_data[6];
+  Motor=flash_data[1];
+  Encoder=flash_data[2];
+  //Control_Mode=flash_data[3];
+  Current_PID.KP=flash_data[4];
+  Current_PID.KI=flash_data[5];
+  Current_PID.KD=flash_data[6];
+  Speed_PID.KP=flash_data[7];
+  Speed_PID.KI=flash_data[8];
+  Speed_PID.KD=flash_data[9];
+  Position_PID.KP=flash_data[10];
+  Position_PID.KI=flash_data[11];
+  Position_PID.KD=flash_data[12];
 }
 
 

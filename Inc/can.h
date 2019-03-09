@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -73,7 +73,6 @@ int can_send_msg(uint32_t ID, uint8_t* data, uint32_t len);
 int can_add_callback(uint32_t ID, void (*func)(CanRxMsgTypeDef* pRxMsg));
 void can_init();
 void can_add_func(void);
-void can_led(int color_flag);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

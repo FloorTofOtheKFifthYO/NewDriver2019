@@ -19,7 +19,7 @@
         cmd_func \
     } \
    
-#define MAX_CMD_ARG_LENGTH 16
+#define MAX_CMD_ARG_LENGTH 20
 #define MAX_CMD_INFO_LENGTH 64
 #define MAX_CMD_LINE_LENGTH 128
 #define MAX_ARGC 12   //参数数量
@@ -36,6 +36,8 @@ void cmd_help_func(int argc,char *argv[]);
 int cmd_parse(char *cmd_line,int *argc,char *argv[]);
 int cmd_exec(int argc,char *argv[]);
 void cmd_init();
+
+uint8_t compare_string(const char *s1,char * s2);
 #ifdef __cplusplus
 }
 #endif

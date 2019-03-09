@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -40,7 +40,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
-
+#include "board.h"
+#include "utils.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -83,7 +84,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PAPin PAPin PAPin */
   GPIO_InitStruct.Pin = HALL1_Pin|HALL2_Pin|HALL3_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -103,7 +104,37 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+  if(Motor==BRUSHLESS_NONSENSOR||Motor==BRUSH)
+    return;
+  Hall_Position=Get_Hall_Position();
+  if(Board_Mode==NORMAL){
+    Phase_Change(Phase_Table_Using_Sensor[Hall_Position],Motor_Duty);
+  }else if(Board_Mode==TEST){
+    
+    for(int i=2;i>=0;--i){
+      if((Hall_Position>>i)&1){
+        uprintf("1");
+      }else{
+        uprintf("0");
+      }      
+    }
+    uprintf("\r\n");  
+  }else{
+    Phase_Test_Table[Test_Table_Cnt]=Hall_Position;
+    Phase_Change(Phase_Const[Test_Table_Cnt],TEST_TABLE_SPEED);
+    Test_Table_Cnt++;
+    if(Test_Table_Cnt>5){
+      Test_Table_Cnt=0; //一个周期后，停止
+      Board_Mode=TEST;
+      Close_Phases();
+      uprintf("Test Table Over!\r\n");
+      for(int i=0;i<6;++i){
+        uprintf("Hall State is %d\r\n",Phase_Test_Table[i]);
+      }
+    }
+  }
+}
 /* USER CODE END 2 */
 
 /**

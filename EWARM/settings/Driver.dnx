@@ -18,7 +18,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1700483638</Checksum>
+        <Checksum>54569536</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -28,8 +28,8 @@
         <Enabled>_ 0</Enabled>
     </CodeCoverage>
     <Disassembly>
-        <MixedMode>1</MixedMode>
         <InstrCount>0</InstrCount>
+        <MixedMode>1</MixedMode>
     </Disassembly>
     <CallStack>
         <ShowArgs>0</ShowArgs>
@@ -43,8 +43,8 @@
         <CpuClock>72000000</CpuClock>
         <ClockAutoDetect>0</ClockAutoDetect>
         <ClockWanted>2000000</ClockWanted>
-        <JtagSpeed>2250000</JtagSpeed>
-        <Prescaler>32</Prescaler>
+        <JtagSpeed>2000000</JtagSpeed>
+        <Prescaler>36</Prescaler>
         <TimeStampPrescIndex>0</TimeStampPrescIndex>
         <TimeStampPrescData>0</TimeStampPrescData>
         <PcSampCYCTAP>1</PcSampCYCTAP>
@@ -145,10 +145,19 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Count>0</Count>
+        <Bp0>_ 0 "EMUL_CODE" "{E:\folder\机器人队\Cube}.248.3" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\board.c}.225.3" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\board.c}.226.3" 0 0 1 "" 0 "" 0</Bp2>
+        <Count>3</Count>
     </Breakpoints2>
     <Aliases>
-        <Count>0</Count>
+        <A0>_ "C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c" ""</A0>
+        <A1>_ "C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_can.c" ""</A1>
+        <A2>_ "C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c" ""</A2>
+        <A3>_ "C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Src\can.c" ""</A3>
+        <A4>_ "E:\folder\机器人队\Cube\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c" ""</A4>
+        <A5>_ "E:\folder\机器人队\Cube\NewDriver2019\Src\main.c" ""</A5>
+        <Count>6</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
 </settings>

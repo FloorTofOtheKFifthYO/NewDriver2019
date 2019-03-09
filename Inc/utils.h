@@ -3,41 +3,59 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
-extern int brush_control_flag;   
-//extern int move_flag;
-
-extern float position_now;
-extern float position_last;
-extern float speed_now;
-
-extern float target_pwm;
-extern float target_speed;
-extern float target_position;
-    
-extern float wave_arg[4];
-extern int send_wave_flag;
-
-extern int motor_type_flag; 
 
 typedef enum{
     BRUSH = 0,
-    BRUSHLESS
-}Motor_type;
+    BRUSHLESS,
+    BRUSHLESS_NONSENSOR
+}Motor_Type;
     
 typedef struct{
-    float SetData;             //定义设定值
-    float ActualData;          //定义实际值
-    float integral;             //定义积分值
-    float err;          //定义偏差值
-    float err_last;             //定义上一个偏差值
-    float Kp;
-    float Ki;
-    float Kd;             //定义比例、积分、微分系数
-    float OutData;
-}PID_struct;
+	float KP;
+	float KD;
+	float KI;
+	float i;
+	float last_err;
+	float i_max;
+	float last_d;
+    float I_TIME;    //2018年7月9日 修改，增加积分时间，
+                    //以前是作为宏定义，但不同PID的积分应该是不一样的                 
+}PID_Struct;
 
-float PID_release(PID_struct *PID,float actual_data,float target_data);
+typedef enum{
+  PWM_Mode=0x00,
+  Current_Mode=0x01,
+  Speed_Mode=0x02,
+  Speed_Current_Mode=0x03,
+  Position_Mode=0x04,
+  Position_Current_Mode=0x05,
+  Position_Speed_Mode=0x06,
+  Position_Speed_Current_Mode=0x07
+}Control_Mode_Struct;
+
+extern PID_Struct Current_PID;
+extern PID_Struct Speed_PID;
+extern PID_Struct Position_PID;
+
+extern float Duty;
+extern float Target_Speed;
+extern float Now_Speed;
+extern float Target_Position;
+extern float Now_Position;
+extern float Target_Current;
+extern float Now_Current;
+extern float Now_Current_buffer;
+extern float Last_Position;
+extern float Target_PWM;
+
+extern Control_Mode_Struct Control_Mode;
+extern Motor_Type Motor;
+
+extern int send_wave_flag;
+
+
+float PID_Release(PID_Struct *PID,float target,float now);
+void PID_init();
 void send_wave(float arg1,float arg2,float arg3,float arg4);
     
 #ifdef __cplusplus

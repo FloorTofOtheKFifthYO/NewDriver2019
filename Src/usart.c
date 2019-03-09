@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -148,6 +148,7 @@ void uprintf(char *fmt, ...)
   size=vsnprintf(uart_buffer, 100 + 1, fmt, arg_ptr);
   va_end(arg_ptr);
   HAL_UART_Transmit(&huart5,(uint8_t *)uart_buffer,size,1000);
+  
 }
 
 /*********************串口中断回调函数********************/

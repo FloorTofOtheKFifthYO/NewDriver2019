@@ -13,6 +13,7 @@
 
      
 uint16_t as5047p_Get_Position();
+uint16_t as5047p_Write_Position(uint16_t data);
 #ifdef __cplusplus
 }
 #endif

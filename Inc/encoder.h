@@ -9,9 +9,12 @@
 typedef enum{
     INCREMENT = 0,
     ABSOLUTE
-}Encoder_type;
-     
-int Encoder_read_speed();
+}Encoder_Type;
+
+extern Encoder_Type Encoder;
+
+void Get_SP();
+
 #ifdef __cplusplus
 }
 #endif

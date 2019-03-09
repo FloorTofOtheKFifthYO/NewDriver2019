@@ -1,7 +1,7 @@
 ﻿E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\Driver.pbd
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\adc.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\as5047p.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\board.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\brush_motor.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\can.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\can_func.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\cmd.pbi
@@ -10,8 +10,17 @@ E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\encoder.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\flash.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\gpio.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\main.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\motor.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\spi.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_msp.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_it.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\tim.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\usart.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\utils.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\system_stm32f1xx.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_adc.pbi
+E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_adc_ex.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_can.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_cortex.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_dma.pbi
@@ -19,7 +28,6 @@ E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_flash.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_flash_ex.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_gpio.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_gpio_ex.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_msp.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_pwr.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_rcc.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_rcc_ex.pbi
@@ -28,8 +36,3 @@ E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_spi_ex.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_tim.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_tim_ex.pbi
 E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_hal_uart.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\stm32f1xx_it.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\system_stm32f1xx.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\tim.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\usart.pbi
-E:\folder\机器人队\Cube\Driver\EWARM\Driver\Obj\utils.pbi
