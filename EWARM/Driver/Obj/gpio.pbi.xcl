@@ -1,17 +1,17 @@
-"E:\folder\机器人队\Cube\NewDriver2019\Src\gpio.c"
+"E:\folder\机器人队\Cube\Driver\Src\gpio.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-E:\folder\机器人队\Cube\NewDriver2019\EWARM/../Inc
+E:\folder\机器人队\Cube\Driver\EWARM/../Inc
 -I
-E:\folder\机器人队\Cube\NewDriver2019\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
 -I
-E:\folder\机器人队\Cube\NewDriver2019\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
 -I
-E:\folder\机器人队\Cube\NewDriver2019\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
 -I
-E:\folder\机器人队\Cube\NewDriver2019\EWARM/../Drivers/CMSIS/Include
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/CMSIS/Include
 -I
 E:\IAR Embedded Workbench 8.0\arm\CMSIS\Core\Include
 -I
@@ -21,15 +21,15 @@ E:\IAR Embedded Workbench 8.0\arm\inc
 -I
 E:\IAR Embedded Workbench 8.0\arm\inc\c
 -I
-E:\folder\机器人队\Cube\NewDriver2019\Inc
+E:\folder\机器人队\Cube\Driver\Inc
 -I
-E:\folder\机器人队\Cube\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Inc
+E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Inc
 -I
-E:\folder\机器人队\Cube\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
+E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 -I
-E:\folder\机器人队\Cube\NewDriver2019\Drivers\CMSIS\Device\ST\STM32F1xx\Include
+E:\folder\机器人队\Cube\Driver\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 -I
-E:\folder\机器人队\Cube\NewDriver2019\Drivers\CMSIS\Include
+E:\folder\机器人队\Cube\Driver\Drivers\CMSIS\Include
 -I
 E:\IAR Embedded Workbench 8.0\arm\CMSIS\Core\Include
 -I

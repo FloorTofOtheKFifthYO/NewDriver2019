@@ -107,8 +107,11 @@ void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
   if(Motor==BRUSHLESS_NONSENSOR||Motor==BRUSH)
     return;
+  Hall_CNT++;
   Hall_Position=Get_Hall_Position();
   if(Board_Mode==NORMAL){
+    if(Motor_Duty_Set!=Motor_Duty)
+      Motor_Duty = Motor_Duty_Set;
     Phase_Change(Phase_Table_Using_Sensor[Hall_Position],Motor_Duty);
   }else if(Board_Mode==TEST){
     

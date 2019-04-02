@@ -1,39 +1,39 @@
-"C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c"
+"E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi_ex.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\EWARM/../Inc
+E:\folder\机器人队\Cube\Driver\EWARM/../Inc
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\EWARM/../Drivers/CMSIS/Include
+E:\folder\机器人队\Cube\Driver\EWARM/../Drivers/CMSIS/Include
 -I
-D:\IAR\arm\CMSIS\Core\Include
+E:\IAR Embedded Workbench 8.0\arm\CMSIS\Core\Include
 -I
-D:\IAR\arm\CMSIS\DSP\Include
+E:\IAR Embedded Workbench 8.0\arm\CMSIS\DSP\Include
 -I
-D:\IAR\arm\inc
+E:\IAR Embedded Workbench 8.0\arm\inc
 -I
-D:\IAR\arm\inc\c
+E:\IAR Embedded Workbench 8.0\arm\inc\c
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Inc
+E:\folder\机器人队\Cube\Driver\Inc
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Inc
+E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Inc
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
+E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\CMSIS\Device\ST\STM32F1xx\Include
+E:\folder\机器人队\Cube\Driver\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 -I
-C:\Users\Mingle\Desktop\ROBOCON\2019\project\NewDriver2019\Drivers\CMSIS\Include
+E:\folder\机器人队\Cube\Driver\Drivers\CMSIS\Include
 -I
-D:\IAR\arm\CMSIS\Core\Include
+E:\IAR Embedded Workbench 8.0\arm\CMSIS\Core\Include
 -I
-D:\IAR\arm\CMSIS\DSP\Include
+E:\IAR Embedded Workbench 8.0\arm\CMSIS\DSP\Include
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -289,8 +289,8 @@ D:\IAR\arm\CMSIS\DSP\Include
 -D__EDG_FLOAT128_ENABLING_POSSIBLE=0
 -DUSE_HAL_DRIVER=1
 -DSTM32F103xE=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="D:\\IAR\\arm\\INC\\c\\DLib_Config_Full.h"
--D_DLIB_CONFIG_FILE_STRING="D:\\IAR\\arm\\INC\\c\\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="E:\\IAR Embedded Workbench 8.0\\arm\\INC\\c\\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_STRING="E:\\IAR Embedded Workbench 8.0\\arm\\INC\\c\\DLib_Config_Full.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V8.22.1.15669/W32 for ARM"
 -D__ICCARM_OLD_DEFINED_VAARGS__=1
 -D__VA_STACK_ALIGN__=8

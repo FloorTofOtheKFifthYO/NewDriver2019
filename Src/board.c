@@ -42,7 +42,7 @@ Phase_State ** Phase_Table_Using_Sensor=0; //当前使用的换向表
 Phase_State * Phase_Const[6]={&AB,&AC,&BC,&BA,&CA,&CB};      //有感无感共用
 Phase_State * Phase_Const_Reverse[6]={&CA,&BA,&BC,&AC,&AB,&CB};  //无感反向
 Phase_State * const Phase_Const_Reverse_sensor[6]={&BA,&CA,&CB,&AB,&AC,&BC};  //有感反向
-Phase_State ** Phase_Table_Using_Nonsensor=Phase_Const_Reverse; //当前使用的换向表
+Phase_State ** Phase_Table_Using_Nonsensor=Phase_Const; //当前使用的换向表
 
 
 uint8_t Phase_Test_Table[6]={5,1,3,2,6,4};//{2,6,4,5,1,3}; // 测试换向表时记录的霍尔状态
@@ -60,7 +60,7 @@ uint8_t First_Time_Check;
 
 float Motor_Duty=0;       //电机占空比
 
-int16_t Start_Position=11660;
+int16_t Start_Position=13406;
 uint16_t Mag_Position=0;
 int Phase_Change_Cnt=0;//换向计数，仅用于磁编码器的无刷电机
 
@@ -86,7 +86,7 @@ void Set_Motor_Duty(float duty){ //设置电机占空比
     else
       Direction=BACKWARD;
   }  
-  Motor_Duty=fabs(duty);
+  Motor_Duty_Set=fabs(duty);
 }
 
 //有感
@@ -289,6 +289,8 @@ void Mag_Brushless_Mointor(uint16_t mag_position){
   
   if(temp!=Phase_Change_Cnt){
     Phase_Change_Cnt=temp;   //判断是否到达下一相，如果是，换相
+    if(Motor_Duty_Set!=Motor_Duty)
+      Motor_Duty = Motor_Duty_Set;
     Phase_Change(Phase_Table_Using_Nonsensor[Phase_Change_Cnt],Motor_Duty);
     //uprintf("%d\r\n",Phase_Change_Cnt);
   }

@@ -8,7 +8,9 @@
      
 typedef enum{
     INCREMENT = 0,
-    ABSOLUTE
+    ABSOLUTE,
+    HALLINC,
+    HALLABS
 }Encoder_Type;
 
 extern Encoder_Type Encoder;

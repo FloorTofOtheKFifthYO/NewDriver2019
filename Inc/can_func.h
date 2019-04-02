@@ -7,19 +7,15 @@
 #include "stm32f1xx_hal.h"
 #include "main.h"
 
-void callback(CanRxMsgTypeDef* pRxMsg);
+void can_pwm_func(CanRxMsgTypeDef* pRxMsg);
+void can_current_func(CanRxMsgTypeDef* pRxMsg);
+void can_speed_func(CanRxMsgTypeDef* pRxMsg);
+void can_speed_current_func(CanRxMsgTypeDef* pRxMsg);
+void can_position_func(CanRxMsgTypeDef* pRxMsg);
+void can_position_current_func(CanRxMsgTypeDef* pRxMsg);
+void can_position_speed_func(CanRxMsgTypeDef* pRxMsg);
+void can_position_speed_current_func(CanRxMsgTypeDef* pRxMsg);
 
-typedef union{
-        char ch[8];
-        uint8_t ui8[8];
-        uint16_t ui16[4];
-        int in[2];
-        float fl[2];
-        double df;
-}can_change_msg;
-   
-extern can_change_msg can_RX_data;
-extern can_change_msg can_TX_data; 
 
    
  #ifdef __cplusplus

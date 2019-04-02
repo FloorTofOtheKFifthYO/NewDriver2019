@@ -18,6 +18,8 @@ extern Brush_Phase Brush_chl_BC;
 extern Brush_Phase Brush_chl_AC;
 extern Brush_Phase Brush_chl;
 
+extern double MAXSPEED;
+
 void Brush_PWM_Control(float pwm);  
 void PWM_Control(float duty);
 void Control();

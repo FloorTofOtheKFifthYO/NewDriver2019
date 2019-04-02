@@ -1,4 +1,4 @@
-"E:\folder\机器人队\Cube\Driver\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c"
+"E:\folder\机器人队\Cube\Driver\Src\dma.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512

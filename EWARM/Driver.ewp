@@ -1101,6 +1101,9 @@
         <name>$PROJ_DIR$/../Src/can.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$/../Src/dma.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$/../Src/spi.c</name>
       </file>
       <file>

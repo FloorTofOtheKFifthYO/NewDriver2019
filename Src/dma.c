@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
+  * File Name          : dma.c
   * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  *                      of all the requested memory to memory DMA transfers.
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -36,49 +36,42 @@
   *
   ******************************************************************************
   */
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal.h"
-#include "main.h"
+#include "dma.h"
 
-/* USER CODE BEGIN Includes */
-#define RXBUFFERSIZE 1
-#define USART_REC_LEN  200
-/* USER CODE END Includes */
+/* USER CODE BEGIN 0 */
 
-extern UART_HandleTypeDef huart1;
+/* USER CODE END 0 */
 
-/* USER CODE BEGIN Private defines */
-extern char USART_RX_BUF[USART_REC_LEN];       //自定义接收存放的数组
-extern uint8_t aRxBuffer[RXBUFFERSIZE];           //hal库使用串口接收缓冲
-extern uint8_t DMAaRxBuffer[99];
-/* USER CODE END Private defines */
+/*----------------------------------------------------------------------------*/
+/* Configure DMA                                                              */
+/*----------------------------------------------------------------------------*/
 
-extern void _Error_Handler(char *, int);
+/* USER CODE BEGIN 1 */
 
-void MX_USART1_UART_Init(void);
+/* USER CODE END 1 */
 
-/* USER CODE BEGIN Prototypes */
-void uprintf(char *fmt, ...);
-void USART_SendString(USART_TypeDef* USARTx, char *fmt, ...);
-void usart_exc();
-void usart_exc_DMA();
-void usart_init();
-void usart_DMA_init();
-void HAL_UART_IDLECallback(UART_HandleTypeDef *huart);
-void send_wave(float arg1,float arg2,float arg3,float arg4);
-/* USER CODE END Prototypes */
+/** 
+  * Enable DMA controller clock
+  */
+void MX_DMA_Init(void) 
+{
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
-#ifdef __cplusplus
+  /* DMA interrupt init */
+  /* DMA1_Channel4_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel4_IRQn);
+  /* DMA1_Channel5_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
+
 }
-#endif
-#endif /*__ usart_H */
+
+/* USER CODE BEGIN 2 */
+
+/* USER CODE END 2 */
 
 /**
   * @}

@@ -148,11 +148,9 @@ void Get_Current(uint16_t times){
     //HAL_Delay(1);
   }
   float Now_Current_V = (float)(temp_val/times)*3.3f*2 /4096;  
-  float Now_Current =50*Now_Current_V/3 - 125/3 - Now_Current_init;// - 9.555;   
+  Now_Current =Now_Current_V/0.185 - 13.513513513514 - Now_Current_init;// - 9.555;   
   if((Duty<0)&&(fabs(Now_Current)>0.1))
       Now_Current=-Now_Current;
-  if(fabs(Now_Current) > fabs(Now_Current_buffer))
-    Now_Current_buffer = Now_Current;
 }
 void Current_init(void){
       float temp_val=0;
@@ -164,9 +162,9 @@ void Current_init(void){
     HAL_Delay(1);
   }
   float Now_Current_V_init = (float)(temp_val/times)*3.3f*2 /4096;  
-  Now_Current_init =50*Now_Current_V_init/3 - 125/3;// - 9.555; 
+  Now_Current_init =Now_Current_V_init/0.185 - 13.513513513514; 
   uprintf("Current INIT %f\r\n", Now_Current_init);
-    return;
+  return;
 }
 /* USER CODE END 1 */
 

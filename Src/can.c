@@ -47,6 +47,7 @@
 #include <assert.h>
 #include "flash.h"
 #include "can_func.h"
+#include "utils.h"
 static int canlistnum = 0;
 CanList canList[50];//最多能加50个can链接，可以改
 CAN_FilterConfTypeDef  sFilterConfig;
@@ -54,6 +55,9 @@ static CanTxMsgTypeDef TxMessage;
 static CanRxMsgTypeDef RxMessage;
 int can_ID;
 void Configure_Filter(void);
+
+can_change_msg can_RX_data;
+can_change_msg can_TX_data;
 /* USER CODE END 0 */
 
 CAN_HandleTypeDef hcan;
@@ -69,11 +73,11 @@ void MX_CAN_Init(void)
   hcan.Init.BS1 = CAN_BS1_9TQ;
   hcan.Init.BS2 = CAN_BS2_2TQ;
   hcan.Init.TTCM = DISABLE;
-  hcan.Init.ABOM = DISABLE;
+  hcan.Init.ABOM = ENABLE;
   hcan.Init.AWUM = DISABLE;
   hcan.Init.NART = DISABLE;
   hcan.Init.RFLM = DISABLE;
-  hcan.Init.TXFP = DISABLE;
+  hcan.Init.TXFP = ENABLE;
   if (HAL_CAN_Init(&hcan) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -163,13 +167,10 @@ void Configure_Filter(void)
   sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;//滤波器位宽为单个32位
   
   
-  //sFilterConfig.FilterIdHigh =(int)flash_data[0]<<5;
-  sFilterConfig.FilterIdHigh =0x0000<<5;//0x0122<<5;//(((unsigned int)0x1314<<3)&0xFFFF0000)>>16; //要过滤的ＩＤ高位
-  sFilterConfig.FilterIdLow = 0x0000;//(((unsigned int)0x1314<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xFFFF;//要过滤的ID低位
-  //sFilterConfig.FilterIdLow = (uint32_t)flash_data[0];
-  sFilterConfig.FilterMaskIdHigh = 0x7ff<<5;// 0xffff;
-  //sFilterConfig.FilterMaskIdHigh = 0x0000<<5;// 0xffff;
-  sFilterConfig.FilterMaskIdLow = 0x0000;//0xffff;
+  sFilterConfig.FilterIdHigh =ID<<8;
+  sFilterConfig.FilterIdLow = 0x0000;
+  sFilterConfig.FilterMaskIdHigh = 0xff<<8;
+  sFilterConfig.FilterMaskIdLow = 0x0000;
   sFilterConfig.FilterFIFOAssignment =CAN_FILTER_FIFO0;//过滤器被关联到FIFO0；
   sFilterConfig.FilterActivation = ENABLE;//使能过滤器
   sFilterConfig.BankNumber = 14;
@@ -246,6 +247,7 @@ void HAL_CAN_RxCpltCallback(CAN_HandleTypeDef* hcan)
 {
   
   CAN_LIST_MATCH(hcan->pRxMsg->StdId, hcan->pRxMsg);
+   HAL_GPIO_TogglePin(GPIOB, LED_D9_Pin);
   if(HAL_CAN_Receive_IT(hcan,CAN_FIFO0)!=HAL_OK)
   {
     __HAL_CAN_ENABLE_IT(hcan, CAN_IT_FOV0 | CAN_IT_FMP0);
@@ -265,7 +267,15 @@ void HAL_CAN_ErrorCallback(CAN_HandleTypeDef *hcan){
 //消息ID+处理函数
 void can_add_func(void)
 {
-  can_add_callback(0X00,callback);
+  
+  can_add_callback((ID<<3)|PWM_Mode,can_pwm_func);
+  can_add_callback((ID<<3)|Current_Mode,can_current_func);
+  can_add_callback((ID<<3)|Speed_Mode,can_speed_func);
+  can_add_callback((ID<<3)|Speed_Current_Mode,can_speed_current_func);
+  can_add_callback((ID<<3)|Position_Mode,can_position_func);
+  can_add_callback((ID<<3)|Position_Current_Mode,can_position_current_func);
+  can_add_callback((ID<<3)|Position_Speed_Mode,can_position_speed_func);
+  can_add_callback((ID<<3)|Position_Speed_Current_Mode,can_position_speed_current_func);
 }
 /* USER CODE END 1 */
 

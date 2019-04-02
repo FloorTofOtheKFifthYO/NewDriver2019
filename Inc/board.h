@@ -97,7 +97,9 @@ extern uint8_t Hall_Position;
 uint8_t Get_Hall_Position();
 void Set_To_Statble_Positon();
 void Set_Motor_Duty(float duty);
-extern float Motor_Duty;    
+extern float Motor_Duty;   
+
+extern Phase_State ** Phase_Table_Using_Nonsensor; //当前使用的换向表
 
 extern int dir_flag;
 

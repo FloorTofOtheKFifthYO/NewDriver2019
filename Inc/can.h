@@ -55,6 +55,17 @@ extern CAN_HandleTypeDef hcan;
 
 /* USER CODE BEGIN Private defines */
 
+typedef union{
+        char ch[8];
+        uint8_t ui8[8];
+        uint16_t ui16[4];
+        int in[2];
+        float fl[2];
+        double df;
+}can_change_msg;
+   
+extern can_change_msg can_RX_data;
+extern can_change_msg can_TX_data; 
 /* USER CODE END Private defines */
 
 extern void _Error_Handler(char *, int);

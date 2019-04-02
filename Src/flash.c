@@ -19,7 +19,7 @@
 //4.锁住FLASH
 //FLASH读取数据：直接读取相应的FLASH地址即可
 
-float flash_data[]={0,0,0,0,0,0,0,0,0,0,0,0,0};//烧进flash中的13个数据
+float flash_data[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};//烧进flash中的13个数据
 
 
 //将参数写进flash中
@@ -58,14 +58,15 @@ void load_prams()
 {
   int i;
   int pram_num=sizeof(flash_data)/sizeof(flash_data[0]);
-    
+  
   for(i=0;i<pram_num;++i){
     flash_data[i]=*((float *)(FLASH_Start+i*4));
     uprintf("flash_data[%d]=%lf\r\n",i,flash_data[i]);
   }	
   uprintf("\r\n");
-  Motor=flash_data[1];
-  Encoder=flash_data[2];
+  ID = (int)flash_data[0];
+  Motor=(int)flash_data[1];
+  Encoder=(int)flash_data[2];
   //Control_Mode=flash_data[3];
   Current_PID.KP=flash_data[4];
   Current_PID.KI=flash_data[5];
@@ -76,6 +77,7 @@ void load_prams()
   Position_PID.KP=flash_data[10];
   Position_PID.KI=flash_data[11];
   Position_PID.KD=flash_data[12];
+  MAXSPEED=flash_data[13];
 }
 
 

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USART.h
-  * Description        : This file provides code for the configuration
-  *                      of the USART instances.
+  * File Name          : dma.h
+  * Description        : This file contains all the function prototypes for
+  *                      the dma.c file
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -37,8 +37,9 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usart_H
-#define __usart_H
+#ifndef __dma_H
+#define __dma_H
+
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -47,42 +48,28 @@
 #include "stm32f1xx_hal.h"
 #include "main.h"
 
+/* DMA memory to memory transfer handles -------------------------------------*/
+extern void _Error_Handler(char*, int);
+
 /* USER CODE BEGIN Includes */
-#define RXBUFFERSIZE 1
-#define USART_REC_LEN  200
+
 /* USER CODE END Includes */
 
-extern UART_HandleTypeDef huart1;
-
 /* USER CODE BEGIN Private defines */
-extern char USART_RX_BUF[USART_REC_LEN];       //自定义接收存放的数组
-extern uint8_t aRxBuffer[RXBUFFERSIZE];           //hal库使用串口接收缓冲
-extern uint8_t DMAaRxBuffer[99];
+
 /* USER CODE END Private defines */
 
-extern void _Error_Handler(char *, int);
-
-void MX_USART1_UART_Init(void);
+void MX_DMA_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-void uprintf(char *fmt, ...);
-void USART_SendString(USART_TypeDef* USARTx, char *fmt, ...);
-void usart_exc();
-void usart_exc_DMA();
-void usart_init();
-void usart_DMA_init();
-void HAL_UART_IDLECallback(UART_HandleTypeDef *huart);
-void send_wave(float arg1,float arg2,float arg3,float arg4);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usart_H */
 
-/**
-  * @}
-  */
+#endif /* __dma_H */
 
 /**
   * @}

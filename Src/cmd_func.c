@@ -52,8 +52,12 @@ void cmd_driver_info_func(int argc,char *argv[])
     
     if(Encoder==INCREMENT)
         uprintf("encoder : incerment\r\n");
-    else
+    else if(Encoder==ABSOLUTE)
         uprintf("encoder : absolute\r\n");
+    else if(Encoder==HALLINC)
+        uprintf("encoder : hall\r\n");
+    else if(Encoder==HALLABS)
+        uprintf("encoder : hall absolute\r\n");
     
     if(Control_Mode==0)
         uprintf("control mode : PWM\r\n");
@@ -77,7 +81,8 @@ void cmd_driver_info_func(int argc,char *argv[])
 void cmd_write_flash_func(int argc,char *argv[])
 {
     uprintf("set can id = %d\r\n", atoi(argv[1]));
-    flash_data[0]=atoi(argv[1]);
+    ID = atoi(argv[1]);
+    flash_data[0]=ID;
     write_prams();
 }
 
@@ -109,8 +114,12 @@ void cmd_encoder_mode_func(int argc,char *argv[])
 {
     if(atoi(argv[1])==0)
         uprintf("set encoder mode as increment\r\n");
-    else
+    else if(atoi(argv[1])==1)
         uprintf("set encoder mode as absolute\r\n");
+    else if(atoi(argv[1])==2)
+        uprintf("set encoder mode as hall\r\n");
+    else if(atoi(argv[1])==3)
+        uprintf("set encoder mode as hall absolute\r\n");
     Encoder=atoi(argv[1]);
     flash_data[2]=Encoder;
     write_prams();
@@ -140,11 +149,14 @@ void cmd_control_mode_func(int argc,char *argv[])
     write_prams();
 }
 
-//pwm 1
-void cmd_pwm_func(int argc,char *argv[])
+//duty 1
+void cmd_set_duty_func(int argc,char *argv[])
 {
-    uprintf("set pwm = %f\r\n", atof(argv[1]));
-    Brush_PWM_Control(atof(argv[1]));
+    if(Motor==BRUSH)
+        Brush_PWM_Control(atof(argv[1]));
+    else
+        Set_Motor_Duty(atof(argv[1]));
+    uprintf("ok,set motor duty=%f\r\n",atof(argv[1]));
 }
 
 //current 1
@@ -164,8 +176,10 @@ void cmd_speed_func(int argc,char *argv[])
 //position 1
 void cmd_position_func(int argc,char *argv[])
 {
+    reset_PID(&Position_PID);
     uprintf("set position = %f\r\n", atof(argv[1]));
     Target_Position=atof(argv[1]);
+    //setup_once_flag = 1;
 }
 
 //current_pid 1 2 3
@@ -213,6 +227,16 @@ void cmd_send_wave_func(int argc,char *argv[])
     send_wave_flag = atoi(argv[1]);
 }
 
+void cmd_brush_change_func(int argc,char *argv[])
+{
+  if(compare_string(argv[1],"ab"))
+    Brush_chl = Brush_chl_AB;
+  else if(compare_string(argv[1],"bc"))
+    Brush_chl = Brush_chl_BC;
+  else if(compare_string(argv[1],"ac"))
+    Brush_chl = Brush_chl_AC;
+}
+
 void cmd_state_func(int argc,char *argv[])
 {
     switch(Motor){
@@ -256,8 +280,12 @@ void cmd_state_func(int argc,char *argv[])
     
     if(Encoder==INCREMENT)
         uprintf("encoder : incerment\r\n");
-    else
+    else if(Encoder==ABSOLUTE)
         uprintf("encoder : absolute\r\n");
+    else if(Encoder==HALLINC)
+        uprintf("encoder : hall\r\n");
+    else if(Encoder==HALLABS)
+        uprintf("encoder : hall absolute\r\n");
     
     if(Control_Mode==0)
         uprintf("control mode : PWM\r\n");
@@ -276,7 +304,7 @@ void cmd_state_func(int argc,char *argv[])
     else
         uprintf("control mode : position-speed-current\r\n");
     
-    uprintf("ID=%x\r\n", flash_data[0]);
+    uprintf("ID=%d\r\n", ID);
     uprintf("Motor_Mode is %x\r\n", Motor);
     uprintf("Control Mode is %x\r\n", Control_Mode);
     uprintf("Encoder is %x\r\n", Encoder);
@@ -291,6 +319,10 @@ void cmd_state_func(int argc,char *argv[])
     uprintf("TIM2->CCR3=%d\r\n",(int)TIM2->CCR3);
     uprintf("TIM4->CNT=%d\r\n", (int)TIM4->CNT);
     uprintf("Motor_Duty=%f\r\n",Motor_Duty);
+    uprintf("Motor_Duty_Set=%f\r\n",Motor_Duty_Set);
+    uprintf("Duty=%f\r\n",Duty);
+    uprintf("max speed = %f\r\n", MAXSPEED);
+    uprintf("Now_Speed_Hall = %f\r\n", Now_Speed_Hall);
 }
 
 /***сп╦пнчк╒**/
@@ -442,11 +474,6 @@ void cmd_phase_change_func(int argc,char *argv[])
     Close_Phases();
 }
 
-void cmd_set_duty_func(int argc,char *argv[])
-{
-    Set_Motor_Duty(atof(argv[1]));
-    uprintf("ok,set motor duty=%f\r\n",atof(argv[1]));
-}
 
 void cmd_rotate_test_func(int argc,char *argv[])
 {
@@ -469,4 +496,30 @@ void cmd_write_as5047p_position_func(int argc,char *argv[])
     uint16_t return_p=as5047p_Write_Position((uint16_t)atoi(argv[1]));
     uprintf("return position:%d\r\n", return_p);
 }
+//max speed 
+void cmd_max_speed_func(int argc,char *argv[])
+{
+    
+    MAXSPEED=atof(argv[1]);
+    uprintf("max speed = %f\r\n", MAXSPEED);
+    flash_data[13]=MAXSPEED;
+    write_prams();
+}
 
+void cmd_brushlessAbsolute_fonc(int argc,char *argv[])
+{
+  flash_data[1] = 1;
+  flash_data[2] = 1;
+  flash_data[3] = 0;
+    flash_data[4]=0;
+    flash_data[5]=0;
+    flash_data[6]=0;
+    flash_data[7]=0;
+    flash_data[8]=0;
+    flash_data[9]=0;
+    flash_data[10]=0;
+    flash_data[11]=0;
+    flash_data[12]=0;
+    flash_data[13]=100000;
+    write_prams();
+}  
